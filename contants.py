@@ -18,7 +18,6 @@ MONTH_TO_SEASON = {
     11: "autumn",
 }
 
-GREEN_COLOR = "#00ff00"
 RED_COLOR = "#ff0000"
 
 
@@ -29,7 +28,10 @@ class TemperatureStats(BaseModel):
 
 
 class CityInfo(BaseModel):
-    total_info: Any  # pd.DataFrame
-    seasonal_stats: Any  # pd.DataFrame
+    anomalies: pd.DataFrame
+    seasonal_stats: pd.DataFrame
     temperature_stats: TemperatureStats
     temperature_trend: float
+
+    class Config:
+        arbitrary_types_allowed = True
